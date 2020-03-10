@@ -162,7 +162,7 @@ body {
 .controls__stop,
 .controls__reset {
   -webkit-appearance: button;
-  background-color: #005dcc;
+  background-color: rgba(44, 107, 109, 1);
   border-radius: 5px;
   color: white;
   font-family: inherit;
@@ -172,37 +172,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.15;
   margin: 0;
+  margin-bottom: 0.5rem;
   overflow: visible;
   padding: 0.75rem 1.125rem;
   text-transform: none;
-}
-
-.controls__start::moz-focus-inner,
-.controls__stop::moz-focus-inner,
-.controls__reset::moz-focus-inner {
-  border-style: none;
-}
-
-.controls__start::moz-focusring,
-.controls__stop::moz-focusring,
-.controls__reset::moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-.controls__start:hover,
-.controls__stop:hover,
-.controls__reset:hover,
-.controls__start:focus,
-.controls__stop:focus,
-.controls__reset:focus {
-  background-color: #002a99;
-  cursor: pointer;
-}
-
-.controls__start,
-.controls__stop,
-.controls__reset {
-  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 26rem) {
@@ -216,4 +190,33 @@ body {
   .controls__stop {
     margin-right: 1rem;
   }
+}
+
+.controls__start:hover,
+.controls__stop:hover,
+.controls__reset:hover,
+.controls__start:focus,
+.controls__stop:focus,
+.controls__reset:focus {
+  background-color: rgba(0, 56, 58, 1);
+  cursor: pointer;
+}
+
+.controls__start[disabled],
+.controls__stop[disabled],
+.controls__reset[disabled] {
+  background-color: rgba(44, 107, 109, 0.7);
+  pointer-events: none;
+}
+
+.controls__start::moz-focus-inner,
+.controls__stop::moz-focus-inner,
+.controls__reset::moz-focus-inner {
+  border-style: none;
+}
+
+.controls__start::moz-focusring,
+.controls__stop::moz-focusring,
+.controls__reset::moz-focusring {
+  outline: 1px dotted ButtonText;
 }

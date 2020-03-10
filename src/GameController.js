@@ -76,23 +76,27 @@ class GameController {
     );
     this.controls.startButton.addEventListener('click', this.startGame);
     this.controls.stopButton.addEventListener('click', this.stopGame);
+
+    this.controls.stopButton.disabled = true;
   }
 
   startGame = () => {
-    if (!this.timeInterval) {
-      this.activateClock();
-      this.activateRandomMoles();
+    this.activateClock();
+    this.activateRandomMoles();
 
-      this.score = 0;
-      this.updateScore(this.score);
-    }
+    this.score = 0;
+    this.updateScore(this.score);
+
+    this.controls.startButton.disabled = true;
+    this.controls.stopButton.disabled = false;
   };
 
   stopGame = () => {
-    if (this.timeInterval) {
-      this.deactivateMoles();
-      this.deactivateClock();
-    }
+    this.deactivateMoles();
+    this.deactivateClock();
+
+    this.controls.startButton.disabled = false;
+    this.controls.stopButton.disabled = true;
   };
 
   updateScore(newScore) {
