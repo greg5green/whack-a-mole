@@ -1,6 +1,6 @@
 import Mole from './Mole';
 
-const GAME_LENGTH = 10;
+const GAME_LENGTH = 30;
 
 class GameController {
   constructor(params) {
@@ -20,10 +20,33 @@ class GameController {
       (mole) =>
         new Mole({
           element: mole,
-          onClick: this.addWhack
+          handleClick: this.addWhack
         })
     );
+
     this.setupControlsListeners();
+  }
+
+  activateClock() {
+    this.timeRemaining = GAME_LENGTH;
+
+    this.timeInterval = setInterval(() => {
+      this.timeRemaining -= 1;
+
+      this.updateTime(this.timeRemaining);
+    }, 1000);
+
+    setTimeout(this.stopGame, GAME_LENGTH * 1000);
+  }
+
+  activateRandomMoles() {
+    const secondsBetweenMoles = Math.ceil(Math.random() * 1) * (1000 / 2);
+
+    this.moleInterval = setInterval(() => {
+      const randomMoleIndex = Math.floor(Math.random() * this.moles.length);
+
+      this.moles[randomMoleIndex].activate();
+    }, secondsBetweenMoles);
   }
 
   addWhack = () => {
@@ -31,6 +54,16 @@ class GameController {
 
     this.updateScore(this.score);
   };
+
+  deactivateClock() {
+    clearInterval(this.timeInterval);
+  }
+
+  deactivateMoles() {
+    clearInterval(this.moleInterval);
+
+    this.moles.forEach((mole) => mole.deactivate(true));
+  }
 
   setupControlsListeners() {
     this.controls.resetButton.addEventListener('click', () =>
@@ -41,22 +74,13 @@ class GameController {
   }
 
   startGame = () => {
-    this.moles.forEach((mole) => mole.addListener());
-
-    this.timeRemaining = GAME_LENGTH;
-
-    this.gameInterval = setInterval(() => {
-      this.timeRemaining -= 1;
-
-      this.updateTime(this.timeRemaining);
-    }, 1000);
-
-    setTimeout(this.stopGame, GAME_LENGTH * 1000);
+    this.activateClock();
+    this.activateRandomMoles();
   };
 
   stopGame = () => {
-    clearInterval(this.gameInterval);
-    this.moles.forEach((mole) => mole.removeListener());
+    this.deactivateMoles();
+    this.deactivateClock();
   };
 
   updateScore(newScore) {
