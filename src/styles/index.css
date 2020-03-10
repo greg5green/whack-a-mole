@@ -2,15 +2,39 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 16px;
+}
+
+.game-container {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 75vh;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .game {
+  width: 100%;
+}
+
+.game__title {
   margin: 0;
-  position: relative;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
 }
 
 .mole-hill__container {
-  background-color: green;
+  background-color: darkgreen;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 0.5rem;
   padding-bottom: calc(((100% / 3) * 0.35) / 2);
 }
 
@@ -41,7 +65,7 @@
 }
 
 .mole-hill__hole-bottom {
-  background-color: green;
+  background-color: darkgreen;
   bottom: 0;
   box-shadow: -3px -40px 15px -22px rgba(0, 0, 0, 0.45),
     0px -40px 15px -18px rgba(0, 0, 0, 0.3);
@@ -85,7 +109,111 @@
   transform: translateX(-50%) translateY(-35%);
 }
 
+.scoreboard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 26rem) {
+  .scoreboard {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.scoreboard__score-container {
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 26rem) {
+  .scoreboard__score-container {
+    margin-bottom: 0;
+    margin-right: 1rem;
+  }
+}
+
+.scoreboard__score,
+.scoreboard__time {
+  font-weight: bold;
+}
+
 .scoreboard__score {
   position: relative;
   z-index: 100;
+}
+
+.controls {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+@media screen and (min-width: 26rem) {
+  .controls {
+    justify-content: center;
+  }
+}
+
+.controls__start,
+.controls__stop,
+.controls__reset {
+  -webkit-appearance: button;
+  background-color: #005dcc;
+  border-radius: 5px;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+  padding: 0.75rem 1.125rem;
+  text-transform: none;
+}
+
+.controls__start::moz-focus-inner,
+.controls__stop::moz-focus-inner,
+.controls__reset::moz-focus-inner {
+  border-style: none;
+}
+
+.controls__start::moz-focusring,
+.controls__stop::moz-focusring,
+.controls__reset::moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+.controls__start:hover,
+.controls__stop:hover,
+.controls__reset:hover,
+.controls__start:focus,
+.controls__stop:focus,
+.controls__reset:focus {
+  background-color: #002a99;
+  cursor: pointer;
+}
+
+.controls__start,
+.controls__stop,
+.controls__reset {
+  margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 26rem) {
+  .controls__start,
+  .controls__stop,
+  .controls__reset {
+    margin-bottom: 0;
+  }
+
+  .controls__start,
+  .controls__stop {
+    margin-right: 1rem;
+  }
 }
