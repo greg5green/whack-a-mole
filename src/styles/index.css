@@ -95,6 +95,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   bottom: 0;
+  cursor: url('../assets/hammer.svg'), crosshair;
   left: 50%;
   opacity: 0;
   padding-top: 57%;
