@@ -14,11 +14,11 @@ class Mole {
     }
   }
 
-  deactivate(shouldClearTimeout) {
+  deactivate(isInternalTimeout) {
     if (this.timeout) {
       this.element.removeEventListener('click', this.onClick);
 
-      if (shouldClearTimeout) {
+      if (!isInternalTimeout) {
         clearTimeout(this.timeout);
       }
 
@@ -29,7 +29,7 @@ class Mole {
   }
 
   onClick = () => {
-    this.deactivate();
+    this.deactivate(true);
     this.handleClick();
   };
 

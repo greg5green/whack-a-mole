@@ -12,7 +12,7 @@ class GameController {
     this.moleElements = params.moles;
     this.score = 0;
     this.scoreElement = params.scoreBoard;
-    this.timeRemaining = 0;
+    this.timeRemaining = GAME_LENGTH;
     this.timeElement = params.timeRemaining;
 
     this.moles = Array.prototype.map.call(
@@ -57,12 +57,17 @@ class GameController {
 
   deactivateClock() {
     clearInterval(this.timeInterval);
+    this.timeInterval = null;
+
+    this.timeRemaining = GAME_LENGTH;
+    this.updateTime(this.timeRemaining);
   }
 
   deactivateMoles() {
     clearInterval(this.moleInterval);
+    this.moleInterval = null;
 
-    this.moles.forEach((mole) => mole.deactivate(true));
+    this.moles.forEach((mole) => mole.deactivate());
   }
 
   setupControlsListeners() {
@@ -74,13 +79,20 @@ class GameController {
   }
 
   startGame = () => {
-    this.activateClock();
-    this.activateRandomMoles();
+    if (!this.timeInterval) {
+      this.activateClock();
+      this.activateRandomMoles();
+
+      this.score = 0;
+      this.updateScore(this.score);
+    }
   };
 
   stopGame = () => {
-    this.deactivateMoles();
-    this.deactivateClock();
+    if (this.timeInterval) {
+      this.deactivateMoles();
+      this.deactivateClock();
+    }
   };
 
   updateScore(newScore) {
