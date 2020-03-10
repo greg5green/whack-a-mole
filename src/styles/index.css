@@ -8,15 +8,16 @@
 }
 
 .mole-hill__container {
+  background-color: green;
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: calc(((100% / 3) * 0.35) / 2);
 }
 
 .mole-hill {
-  background-color: green;
   overflow: hidden;
   position: relative;
-  width: 33%;
+  width: calc(100% / 3);
 }
 
 .mole-hill::before {
