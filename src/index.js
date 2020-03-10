@@ -1,6 +1,6 @@
 import GameController from './GameController';
 import Mole from './Mole';
-import './index.css';
+import './styles/index.css';
 
 const game = new GameController({
   moles: document.querySelectorAll('.mole'),
