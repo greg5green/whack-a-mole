@@ -164,6 +164,7 @@ body {
 .controls__reset {
   -webkit-appearance: button;
   background-color: rgba(44, 107, 109, 1);
+  border: none;
   border-radius: 5px;
   color: white;
   font-family: inherit;

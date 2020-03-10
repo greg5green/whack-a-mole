@@ -25,6 +25,8 @@ class GameController {
     );
 
     this.setupControlsListeners();
+    this.updateScore(this.score);
+    this.updateTime(this.timeRemaining);
   }
 
   activateClock() {
@@ -56,11 +58,11 @@ class GameController {
   };
 
   deactivateClock() {
+    this.timeRemaining = 0;
+    this.updateTime(this.timeRemaining);
+
     clearInterval(this.timeInterval);
     this.timeInterval = null;
-
-    this.timeRemaining = GAME_LENGTH;
-    this.updateTime(this.timeRemaining);
   }
 
   deactivateMoles() {
@@ -70,22 +72,29 @@ class GameController {
     this.moles.forEach((mole) => mole.deactivate());
   }
 
+  resetGame = () => {
+    this.score = 0;
+    this.updateScore(this.score);
+
+    this.timeRemaining = GAME_LENGTH;
+    this.updateTime(this.timeRemaining);
+
+    this.controls.resetButton.disabled = true;
+    this.controls.startButton.disabled = false;
+  };
+
   setupControlsListeners() {
-    this.controls.resetButton.addEventListener('click', () =>
-      this.updateScore(0)
-    );
+    this.controls.resetButton.addEventListener('click', this.resetGame);
     this.controls.startButton.addEventListener('click', this.startGame);
     this.controls.stopButton.addEventListener('click', this.stopGame);
 
+    this.controls.resetButton.disabled = true;
     this.controls.stopButton.disabled = true;
   }
 
   startGame = () => {
     this.activateClock();
     this.activateRandomMoles();
-
-    this.score = 0;
-    this.updateScore(this.score);
 
     this.controls.startButton.disabled = true;
     this.controls.stopButton.disabled = false;
@@ -95,7 +104,7 @@ class GameController {
     this.deactivateMoles();
     this.deactivateClock();
 
-    this.controls.startButton.disabled = false;
+    this.controls.resetButton.disabled = false;
     this.controls.stopButton.disabled = true;
   };
 
