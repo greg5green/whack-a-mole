@@ -1,3 +1,41 @@
-#main {
-  background-color: yellow;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.mole-hole__container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mole-hole {
+  background-color: green;
+  position: relative;
+  width: 33%;
+}
+
+.mole-hole::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+  width: 100%;
+}
+
+.mole {
+  background-color: brown;
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 60%;
+}
+
+.mole::before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+  width: 100%;
 }
