@@ -68,7 +68,7 @@ body {
   background-color: darkgreen;
   bottom: 0;
   box-shadow: -3px -40px 15px -22px rgba(0, 0, 0, 0.45),
-    0px -40px 15px -18px rgba(0, 0, 0, 0.3);
+    0 -40px 15px -18px rgba(0, 0, 0, 0.3);
   left: 50%;
   padding-top: 20%;
   position: absolute;
@@ -194,6 +194,18 @@ body {
   }
 }
 
+.controls__start::moz-focus-inner,
+.controls__stop::moz-focus-inner,
+.controls__reset::moz-focus-inner {
+  border-style: none;
+}
+
+.controls__start::moz-focusring,
+.controls__stop::moz-focusring,
+.controls__reset::moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
 .controls__start:hover,
 .controls__stop:hover,
 .controls__reset:hover,
@@ -209,16 +221,4 @@ body {
 .controls__reset[disabled] {
   background-color: rgba(44, 107, 109, 0.7);
   pointer-events: none;
-}
-
-.controls__start::moz-focus-inner,
-.controls__stop::moz-focus-inner,
-.controls__reset::moz-focus-inner {
-  border-style: none;
-}
-
-.controls__start::moz-focusring,
-.controls__stop::moz-focusring,
-.controls__reset::moz-focusring {
-  outline: 1px dotted ButtonText;
 }

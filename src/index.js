@@ -1,8 +1,7 @@
 import GameController from './GameController';
-import Mole from './Mole';
 import './styles/index.css';
 
-const game = new GameController({
+new GameController({
   moles: document.querySelectorAll('.mole'),
   resetButton: document.querySelector('.controls__reset'),
   scoreBoard: document.querySelector('.scoreboard__score'),
