@@ -17,6 +17,9 @@
   "author": "Greg Green <greggreen@gmail.com>",
   "license": "UNLICENSE",
   "private": true,
+  "engines": {
+    "node": ">=12"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
