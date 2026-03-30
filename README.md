@@ -2,35 +2,35 @@
 
 ## Prerequisites
 
-- Node (preferably managed via NVM)
-- Yarn
+- Node 24.14.1 (preferably managed via NVM or mise)
+- pnpm
 
 ## Build
 
 To build or run the development server, start with these steps:
 
 1. Clone the repository and `cd` into the cloned directory
-1. `nvm use` (_Alternative:_ Make sure you have Node v12 installed and your PATH points to that version)
-1. `yarn` to install build dependencies
+1. `nvm use` (_Alternative:_ Make sure you have Node 24.14.1 installed and your PATH points to that version)
+1. `pnpm install` to install build dependencies
 
 To build a minified version of the game:
 
-- `yarn build:production`
+- `pnpm build:production`
   - A copy of the game will be built into the `/dist` folder
 
 To build a non-minified version of the game:
 
-- `yarn build`
+- `pnpm build`
   - A copy of the game will be built into the `/dist` folder
 
 To run a dev server that automatically builds the game and hosts a version locally:
 
-- `yarn start`
+- `pnpm start`
   - A webserver is started up that can be reached at `http://localhost:3000`
 
 ### Development Tasks
 
-- `yarn lint` - Will lint CSS and JS files to find any potential issues
+- `pnpm lint` - Will lint CSS and JS files to find any potential issues
 
 ### Other Notes
 
