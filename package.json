@@ -4,7 +4,7 @@
   "scripts": {
     "build": "webpack --mode=development",
     "build:production": "webpack --mode=production",
-    "lint": "yarn lint:js && yarn lint:styles",
+    "lint": "pnpm lint:js && pnpm lint:css",
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:js": "eslint 'src/**/*.js'",
     "start": "webpack-dev-server",
@@ -20,8 +20,9 @@
   "author": "Greg Green <greggreen@gmail.com>",
   "license": "UNLICENSE",
   "private": true,
+  "packageManager": "pnpm",
   "engines": {
-    "node": "~16.11.1"
+    "node": "~24.14.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

@@ -1,10 +1,10 @@
-FROM node:16.11.1-alpine AS build
+FROM node:24.14.1-alpine AS build
 
 WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+COPY package.json pnpm-lock.yaml ./
+RUN npm install -g pnpm@10.32.1 && pnpm install --frozen-lockfile
 COPY . .
-RUN yarn build:production
+RUN NODE_OPTIONS=--openssl-legacy-provider pnpm build:production
 
 FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
